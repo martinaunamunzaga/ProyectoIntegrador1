@@ -37,6 +37,14 @@ posteo_id INT UNSIGNED,
 FOREIGN KEY(posteo_id) REFERENCES posteos(id)
 );
 
+CREATE TABLE seguir(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+seguidores VARCHAR(250)
+
+);
+
+
+
 INSERT INTO usuarios values
 (DEFAULT, 'Martina Unaunzaga', 'mar@gmail.com', '2001-11-18', 'holahola', '1167257560', '/imagenes/perfil.jpg'),
 (DEFAULT, 'Lautaro Espiño', 'laue@hotmail.com', '2000-11-18', 'loros', '1144352578', '/imagenes/hola.jpg'),
