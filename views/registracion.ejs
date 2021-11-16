@@ -15,32 +15,36 @@
                 <h1 class="titulo1">Regístrate</h1>
                 <h3 class="titulo2">para ver y compartir tus aventuras vinícolas!</h3>
 
-                <form class="inputForm" action="/" target="/">
+                <form class="inputForm" action="/users/register" target="/" method="post" enctype="multipart/form-data">
                     <p>
-                        <input type="text" placeholder="Nombre" name="name" class="inputForm">
+                        <input type="text" placeholder="Nombre" name="nombre" class="inputForm">
                     </p>
 
+
                     <p>
-                        <input type="text" placeholder="Nombre de usuario" name="username" class="inputForm" >
+                        <input type= "email" placeholder="Email" name="email" class="inputForm">
                     </p>
 
 
                     <p class="date">
                         <p style="margin-bottom: -20px; padding: 0;">Fecha de nacimiento</p>
-                        <input type="date" name="date" class="inputForm">
+                        <input type="date" name="nacimiento" class="inputForm">
                     </p>
                         
+
                     <p>
-                        <input type= "email" placeholder="Email" name="email" class="inputForm">
+                        <input type= "password" placeholder="contraseña" name="contraseña="inputForm">
                     </p>
 
                     <p>
-                        <input type= "number" placeholder="Número de teléfono" name="number" class="inputForm">
+                        <input type= "number" placeholder="Número de teléfono" name="telefono" class="inputForm">
+                    </p>
+
+                    <p>
+                        <input type= "file" name="imagen" id="">
                     </p>
     
-                    <p>
-                        <input type= "password" placeholder="Contraseña" name="password" class="inputForm">
-                    </p>
+                    
     
                         <button class="buttonForm" type="submit">Registrarme!</button>
                     
