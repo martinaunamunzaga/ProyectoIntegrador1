@@ -12,9 +12,7 @@ module.exports=(sequelize, DataTypes) => {
         descripcion:{
             type: DataTypes.STRING
         },
-        usuario_id:{
-            type: DataTypes.INTEGER
-        },
+       
         createdAt:{
             type: DataTypes.DATE,
             field:'created_at'
@@ -23,7 +21,9 @@ module.exports=(sequelize, DataTypes) => {
             type: DataTypes.DATE,
             field:'updated_at'
         },
-        
+        usuario_id:{
+            type: DataTypes.INTEGER
+        },
         
     }
     let config= {

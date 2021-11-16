@@ -16,14 +16,14 @@
                 <article class="post uk-card-default uk-flex uk-flex-column">
                     <div class="info-usuario uk-flex ">
                         <div class="fotoPerfil">
-                            <img src="<%= post.brandUser.profilepic %> " alt="">
+                            <img src="<%= post.usuario.imagen %> " alt="">
                         </div>
-                        <h4><a class="atUsername" href="/users/profile/<%= post.brandUser.id %> "><%= post.brandUser.username %> </a></h4>
+                        <h4><a class="atUsername" href="/users/profile/<%= post.usuario.id %> "><%= post.usuario.nombre %> </a></h4>
                         
                     </div>
                     <div class="post-body uk-flex uk-flex-center">
                         <a href="/posts/detail/<%= post.id %> ">
-                            <img src="<%= post.image %> " alt="">
+                            <img src="<%= post.imagen %> " alt="">
                             
                         </a>
                     </div>
@@ -35,18 +35,18 @@
                             </li>
                         </ul>
                         <div class="post-pie uk-flex">
-                            <h5 class="description"><a class="atUsername" href="/users/profile/<%= post.brandUser.id %> "><%= post.brandUser.username %> </a></h5>
-                            <p class="description"><%= post.description %> </p>
+                            <h5 class="description"><a class="atUsername" href="/users/profile/<%= post.usuario.id %> "><%= post.usuario.nombre %> </a></h5>
+                            <p class="description"><%= post.descripcion %> </p>
                         </div>
                     </div>
                     <div class="post-comentarios">
                         <h6>Comentarios</h6>
                         <ul>
                     
-                            <% for( let i = 0; i < post.comments.length; i++ ) { %>
+                            <% for( let i = 0; i < post.comentarios.length; i++ ) { %>
                                 <li>
-                                    <a href="/users/profile/<%= post.comments[i].brandUser.id %> "><%= post.comments[i].brandUser.username %>   </a>
-                                    <p><%= post.comments[i].content %> </p>
+                                    <a href="/users/profile/<%= post.comentarios[i].usuario.id %> "><%= post.comentarios[i].usuario.nombre %>   </a>
+                                    <p><%= post.comentarios[i].comentario %> </p>
                                 </li>
                             <% } %>
                             <a href="">Ver más...</a>

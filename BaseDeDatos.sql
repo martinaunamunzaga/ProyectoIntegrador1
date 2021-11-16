@@ -39,8 +39,10 @@ FOREIGN KEY(posteo_id) REFERENCES posteos(id)
 
 CREATE TABLE seguir(
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
-seguidores VARCHAR(250)
-
+seguidor INT UNSIGNED,
+seguido INT UNSIGNED,
+FOREIGN KEY(seguidor) REFERENCES usuarios(id),
+FOREIGN KEY(seguido) REFERENCES usuarios(id)
 );
 
 
