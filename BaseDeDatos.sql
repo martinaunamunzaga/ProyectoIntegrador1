@@ -38,7 +38,7 @@ FOREIGN KEY(posteo_id) REFERENCES posteos(id)
 );
 
 CREATE TABLE seguir(
-id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 seguidor INT UNSIGNED,
 seguido INT UNSIGNED,
 FOREIGN KEY(seguidor) REFERENCES usuarios(id),
@@ -48,19 +48,19 @@ FOREIGN KEY(seguido) REFERENCES usuarios(id)
 
 
 INSERT INTO usuarios values
-(DEFAULT, 'Martina Unaunzaga', 'mar@gmail.com', '2001-11-18', 'holahola', '1167257560', '/imagenes/perfil.jpg'),
-(DEFAULT, 'Lautaro Espiño', 'laue@hotmail.com', '2000-11-18', 'loros', '1144352578', '/imagenes/hola.jpg'),
-(DEFAULT, 'Julieta Rodriguez', 'jular@gmail.com', '2001-10-02', '1234j', '1122681396', '/imagenes/fot.jpg'),
-(DEFAULT, 'Martina Liparini', 'mlipa@yahoo.com', '2001-10-08', 'rocco', '1149971187', '/imagenes/jamaica.jpg'),
-(DEFAULT, 'José Gimenez', 'josecito@hotmail.com', '1997-06-23', 'pajaros', '1199786534', '/imagenes/porfile.jpg');
+(DEFAULT, 'Martina Unaunzaga', 'mar@gmail.com', '2001-11-18', 'holahola', '1167257560', '/images/martu2_newzeland .jpg'),
+(DEFAULT, 'Lautaro Espiño', 'laue@hotmail.com', '2000-11-18', 'loros', '1144352578', '/images/logo2.jfif'),
+(DEFAULT, 'Julieta Rodriguez', 'jular@gmail.com', '2001-10-02', '1234j', '1122681396', '/images/logo3.jpg'),
+(DEFAULT, 'Martina Liparini', 'mlipa@yahoo.com', '2001-10-08', 'rocco', '1149971187', '/images/attachment_75908874-e1552887176124.jpg'),
+(DEFAULT, 'José Gimenez', 'josecito@hotmail.com', '1997-06-23', 'pajaros', '1199786534', '/images/attachment_75908874-e1552887176124.jpg');
 
 
 
 
 INSERT INTO posteos values
-(DEFAULT, '/images/wine.jpg', 'El mejor vino que vas a probar en tu vida', default,default, 1),
-(DEFAULT, '/images/losvinos.jpg', 'Siempre con un tinto en la mano', default,default, 3),
-(DEFAULT, '/images/tinto.jpg', 'Para este domingo que mejor?', default,default, 5),
+(DEFAULT, '/images/swartland.jpg', 'El mejor vino que vas a probar en tu vida', default,default, 1),
+(DEFAULT, '/images/jacobscreekreserva.jpeg', 'Siempre con un tinto en la mano', default,default, 3),
+(DEFAULT, '/images/grandbarossa.jpeg', 'Para este domingo que mejor?', default,default, 5),
 (DEFAULT, '/images/rutini.jpg', 'Tomate un Rutini', default,default, 2),
 (DEFAULT, '/images/blanco.jpg', 'Siempre brindando con un vino blanco', default,default, 5),
 (DEFAULT, '/images/rosado.jpg', 'Te gusta el rosado?', default,default, 4),

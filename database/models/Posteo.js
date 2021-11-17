@@ -13,13 +13,13 @@ module.exports=(sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
        
-        createdAt:{
+        created_at:{
             type: DataTypes.DATE,
-            field:'created_at'
+            
         },
-        updatedAt:{
+        updated_at:{
             type: DataTypes.DATE,
-            field:'updated_at'
+            
         },
         usuario_id:{
             type: DataTypes.INTEGER
@@ -28,6 +28,7 @@ module.exports=(sequelize, DataTypes) => {
     }
     let config= {
         tableName:"posteos",
+        underscored: true
     }
     const Posteo=sequelize.define(alias, cols, config)
     Posteo.associate=(model)=>{
