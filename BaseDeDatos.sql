@@ -62,12 +62,12 @@ INSERT INTO posteos values
 (DEFAULT, '/images/jacobscreekreserva.jpeg', 'Siempre con un tinto en la mano', default,default, 3),
 (DEFAULT, '/images/grandbarossa.jpeg', 'Para este domingo que mejor?', default,default, 5),
 (DEFAULT, '/images/rutini.jpg', 'Tomate un Rutini', default,default, 2),
-(DEFAULT, '/images/blanco.jpg', 'Siempre brindando con un vino blanco', default,default, 5),
-(DEFAULT, '/images/rosado.jpg', 'Te gusta el rosado?', default,default, 4),
-(DEFAULT, '/images/losmejores.jpg', 'Los mejores vinos los tenemos nosotros', default,default, 1),
-(DEFAULT, '/images/malbec.jpg', 'Sabado con Malbec', default,default, 3),
-(DEFAULT, '/images/vinos.jpg', 'Disfruta de unas copas con amigos', default,default, 2),
-(DEFAULT, '/images/tuvino.jpg', 'El vino que estas buscando', default,default, 1);
+(DEFAULT, '/images/sauvignonBlanc.jpeg', 'Siempre brindando con un vino blanco', default,default, 5),
+(DEFAULT, '', 'Te gusta el rosado?', default,default, 4),
+(DEFAULT, '', 'Los mejores vinos los tenemos nosotros', default,default, 1),
+(DEFAULT, '', 'Sabado con Malbec', default,default, 3),
+(DEFAULT, '', 'Disfruta de unas copas con amigos', default,default, 2),
+(DEFAULT, '/images/elenemigo.jpeg', 'El vino que estas buscando', default,default, 1);
 
 INSERT INTO comentarios values
 (DEFAULT, 'Muy buen vino la verdad', default,default, 3, 1),
