@@ -67,7 +67,7 @@ INSERT INTO posteos values
 (DEFAULT, '', 'Los mejores vinos los tenemos nosotros', default,default, 1),
 (DEFAULT, '', 'Sabado con Malbec', default,default, 3),
 (DEFAULT, '', 'Disfruta de unas copas con amigos', default,default, 2),
-(DEFAULT, '/images/elenemigo.jpeg', 'El vino que estas buscando', default,default, 1);
+(DEFAULT, '/images/thalia.jpg', 'El vino que estas buscando', default,default, 1);
 
 INSERT INTO comentarios values
 (DEFAULT, 'Muy buen vino la verdad', default,default, 3, 1),
