@@ -15,19 +15,19 @@
                 <h1 class="titulo1">Regístrate</h1>
                 <h3 class="titulo2">para ver y compartir tus aventuras vinícolas!</h3>
 
-                <form class="inputForm" action="/users/register" target="/users/register" method="post" enctype="multipart/form-data">
+                <form class="inputForm" action="/users/register" method="post" enctype="multipart/form-data">
                     <p>
                         <input type="text" placeholder="Nombre" name="nombre" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                    
 
                    
                     <p>
                         <input type= "email" placeholder="Email" name="email" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                   
 
 
                     <p class="date">
@@ -35,28 +35,28 @@
                         <input type="date" name="nacimiento" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                    
 
 
                     <p>
                         <input type= "password" placeholder="Contraseña" name="contraseña=" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                    
 
                 
                     <p>
                         <input type= "number" placeholder="Número de teléfono" name="telefono" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                   
 
 
                     <p>
                         <input type= "file" name="imagen" class="inputForm">
                     </p>
 
-                    <%- errores %>
+                    <%- locals.errores %>
     
     
                     <button class="buttonForm" type="submit">Registrarme!</button>

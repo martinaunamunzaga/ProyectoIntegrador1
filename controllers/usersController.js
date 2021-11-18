@@ -49,7 +49,7 @@ const controller = {
           }).catch(error => {
             return res.render(error);
           })
-        res.render('registracion');
+        
       },
       login: function (req, res){
         res.render ('login');
