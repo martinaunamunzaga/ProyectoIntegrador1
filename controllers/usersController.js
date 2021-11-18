@@ -27,12 +27,10 @@ const validateUser = function (req) {
 }
 const controller = {
   miPerfil:  function(req, res) {
-      for (let i = 0; i < posts.list.length; i++) {
-        const element = posts.list[i];
-        if (element.brandUser.id == req.params.id) {
+      
           res.render('miPerfil', {post:element});
-        }
-      }
+        
+      
     
       },
       registracion: function(req, res) {

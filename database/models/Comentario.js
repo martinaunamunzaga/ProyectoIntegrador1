@@ -10,10 +10,10 @@ module.exports=(sequelize, DataTypes) => {
                 type: DataTypes.STRING
             },
             
-            createdAt:{
+            created_at:{
                 type: DataTypes.DATE
             },
-            updatedAt:{
+            updated_at:{
                 type: DataTypes.DATE
             },
             usuario_id:{
@@ -24,7 +24,9 @@ module.exports=(sequelize, DataTypes) => {
             },
         }
     let config= {
-        tableName:"comentarios",
+        tableName:"comentarios", 
+        underscored:true
+        
     }
     const Comentario=sequelize.define(alias, cols, config)
     Comentario.associate=(model)=>{
