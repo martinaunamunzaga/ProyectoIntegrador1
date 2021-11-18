@@ -21,7 +21,9 @@ const validateUser = function (req) {
   if (!req.body.telefono) {
     errors.push('EL TELÉFONO ES REQUERIDO');
   }
+
   return errors;
+  
 }
 const controller = {
   miPerfil:  function(req, res) {
@@ -39,7 +41,7 @@ const controller = {
       store: function(req, res) {
         let errores = validateUser(req)
         if (errores.length > 0) {
-          return res.render('registracion', { errores });
+          return res.render('registracion', {errores: errores});
         }
         req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
         req.body.imagen = (req.file.destination + req.file.filename).replace('public', '')
