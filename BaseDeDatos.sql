@@ -64,7 +64,7 @@ INSERT INTO posteos values
 (DEFAULT, '/images/rutini.jpg', 'Tomate un Rutini', default,default, 2),
 (DEFAULT, '/images/sauvignonBlanc.jpeg', 'Siempre brindando con un vino blanco', default,default, 5),
 (DEFAULT, '', 'Te gusta el rosado?', default,default, 4),
-(DEFAULT, '', 'Los mejores vinos los tenemos nosotros', default,default, 1),
+(DEFAULT, '/images/elenemigo.jpeg', 'Los mejores vinos los tenemos nosotros', default,default, 1),
 (DEFAULT, '', 'Sabado con Malbec', default,default, 3),
 (DEFAULT, '', 'Disfruta de unas copas con amigos', default,default, 2),
 (DEFAULT, '/images/thalia.jpg', 'El vino que estas buscando', default,default, 1);

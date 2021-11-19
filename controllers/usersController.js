@@ -28,7 +28,18 @@ const validateUser = function (req) {
 const controller = {
   miPerfil:  function(req, res) {
       
-          res.render('miPerfil', {post:element});
+    db.Usuario.findByPk( req.params.id, { 
+      include: [{ association: "posteos"     
+      },{association:"comentarios"}],
+      order:[["posteos","id","desc"]]
+    })
+    .then(data=>{
+      
+      res.render('miPerfil', {
+        user: data
+      });
+      
+    })
         
       
     
