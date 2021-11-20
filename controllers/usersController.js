@@ -39,13 +39,15 @@ const controller = {
       store: function(req, res) {
         let errores = validateUser(req)
         if (errores.length > 0) {
-          return res.render('registracion', {errores: errores});
+          return res.send('registracion', {errores: errores});
         }
+
         req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
+
         req.body.imagen = (req.file.destination + req.file.filename).replace('public', '')
         db.Usuario.create(req.body)
           .then(post => {
-            res.redirect('/users/login');
+            res.redirect('/');
           }).catch(error => {
             return res.render(error);
           })

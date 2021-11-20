@@ -7,6 +7,7 @@
     <%- include("./partials/headerDeslogueado") %>
 
     <main>
+
         <div class="uk-section uk-section-small">
             <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-center uk-flex-column">
              
@@ -20,47 +21,40 @@
                         <input type="text" placeholder="Nombre" name="nombre" class="inputForm">
                     </p>
 
-                    
-
-                   
                     <p>
                         <input type= "email" placeholder="Email" name="email" class="inputForm">
                     </p>
-
-                   
-
 
                     <p class="date">
                         <p style="margin-bottom: -20px; padding: 0;">Fecha de nacimiento</p>
                         <input type="date" name="nacimiento" class="inputForm">
                     </p>
 
-                    
-
-
                     <p>
-                        <input type= "password" placeholder="Contraseña" name="contraseña=" class="inputForm">
+                        <input type= "password" placeholder="Contraseña" name="contraseña" class="inputForm">
                     </p>
 
-                    
-
-                
                     <p>
                         <input type= "number" placeholder="Número de teléfono" name="telefono" class="inputForm">
                     </p>
 
-                   
-
-
                     <p>
                         <input type= "file" name="imagen" class="inputForm">
                     </p>
-
-                    <%- locals.errores %>
-    
-    
-                    <button class="buttonForm" type="submit">Registrarme!</button>
                     
+                    <button class="buttonForm" type="submit">Registrarme!</button>
+</a>
+
+    
+                    
+                    <% if (locals.errores) { %>
+                        <% errores.forEach(error => { %>
+                          <div class="alert alert-danger" role="alert">
+                            <%= error %> 
+                          </div>
+                        <% }) %>
+                      <% } %>
+
                </div>
             
                 </form>
