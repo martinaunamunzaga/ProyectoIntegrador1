@@ -1,5 +1,38 @@
 const db = require("../database/models")
 const bcrypt = require("bcryptjs")
+
+let usersController = {
+
+  registracion: function(req, res) {f
+    res.render('registracion');
+    res.redirect('/');
+  },
+
+  login: function (req, res){
+        res.render ('login');
+        res.redirect('/');
+
+      },
+
+  processLogin: function(req,res){
+    let errors = validationResult(req)
+
+    if (errors.isEmpty()){
+      let usersJSON = fs.readFileSync('users.json', { })
+      let users
+      if (usersJSON == "") {
+        users = []
+      } else {
+        users = JSON.parse(usersJSON)
+      }
+      
+    } else {
+      return res.render('login', { errors: errors.errors})
+    }
+  }
+
+}
+/*
 const validateUser = function (req) {
   const errors = [];
 
@@ -25,6 +58,7 @@ const validateUser = function (req) {
   return errors;
   
 }
+*/
 const controller = {
   miPerfil:  function(req, res) {
       
@@ -40,13 +74,9 @@ const controller = {
       });
       
     })
-        
-      
     
       },
-      registracion: function(req, res) {
-        res.render('registracion');
-      },
+      
       store: function(req, res) {
         let errores = validateUser(req)
         if (errores.length > 0) {
@@ -57,6 +87,7 @@ const controller = {
 
         req.body.imagen = (req.file.destination + req.file.filename).replace('public', '')
         db.Usuario.create(req.body)
+
           .then(post => {
             res.redirect('/');
           }).catch(error => {
@@ -64,9 +95,7 @@ const controller = {
           })
         
       },
-      login: function (req, res){
-        res.render ('login');
-      },
+      
       editarPerfil: function (req, res){
         res.render ('editarPerfil');
       }

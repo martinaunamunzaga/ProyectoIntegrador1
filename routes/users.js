@@ -6,9 +6,18 @@ const upload = multer({ dest: 'public/images/' });
 
 /* GET users listing. */
 router.get('/profile/:id', usersController.miPerfil);
+
 router.get('/register', usersController.registracion);
+router.post ('/register', upload.single('imagen'), usersController.store)
+
 router.get ('/login', usersController.login) 
+router.post('/login', [
+    check('email').isEmail().withMessage('Ingrese un email válido'),
+    check('password').isLenght({min: 4}).withMessage('Ingrese una contraseña válida'),
+                      ], usersController.processLogin)
+
 router.get ('/edit', usersController.editarPerfil)
-router.post (`/register`, upload.single(`imagen`), usersController.store)
+
+
 
 module.exports = router;
