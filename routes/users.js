@@ -1,14 +1,38 @@
 var express = require('express');
 var router = express.Router();
 const usersController = require('../controllers/usersController');
+
+/*Multer*/
+
 var multer = require('multer');
-const upload = multer({ dest: 'public/images/' });
+const path = require('path')
+
+var storage = multer.diskStorage({
+    destination: (req, res, cb) => {
+        cb(null, '../public/images/foto')
+    },
+    filename: (req, res, cb) => {
+        cb(null, file.fieldname + ' ' + Date.now() + path. extname(file.originalname))
+    },
+})
+
+var upload = multer ({ storage: storage })
+
+router.post('/', upload.single('foto', usersController.store))
+
 
 /* GET users listing. */
+
+/* Perfil */
+
 router.get('/profile/:id', usersController.miPerfil);
 
+/* Registro */
+
 router.get('/register', usersController.registracion);
-router.post ('/register', upload.single('imagen'), usersController.store)
+router.post ('/register', upload.single('foto'), usersController.store)
+
+/* Login */
 
 router.get ('/login', usersController.login) 
 router.post('/login', [
@@ -23,6 +47,8 @@ router.get('/check', function(req, res){
         res.send("El usuario logueado es " + req.session.usuarioLogueado.email)
     }
 },
+
+/* Editar perfil */
 
 router.get ('/edit', usersController.editarPerfil),
 
