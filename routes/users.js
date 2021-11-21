@@ -31,6 +31,11 @@ router.get('/profile/:id', usersController.miPerfil);
 
 router.get('/register', usersController.registracion);
 router.post ('/register', upload.single('foto'), usersController.store)
+router.post('/register', [
+    check('email').isEmail().withMessage('Ingrese un email válido'),
+    check('password').isLenght({min: 4}).withMessage('Ingrese una contraseña válida'),
+                      ], usersController.processLogin)
+
 
 /* Login */
 

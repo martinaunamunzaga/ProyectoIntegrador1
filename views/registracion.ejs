@@ -43,17 +43,12 @@
                     </p>
                     
                     <button class="buttonForm" type="submit">Registrarme!</button>
-</a>
-
     
                     
-                    <% if (locals.errores) { %>
-                        <% errores.forEach(error => { %>
-                          <div class="alert alert-danger" role="alert">
-                            <%= error %> 
-                          </div>
-                        <% }) %>
-                      <% } %>
+                    <% if (locals.errors) { %>
+                        <% <p class = "error">  <%= errors.message %> </p> 
+                          <% } %>
+                      
 
                </div>
             
