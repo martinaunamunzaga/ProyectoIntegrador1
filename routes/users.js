@@ -16,8 +16,16 @@ router.post('/login', [
     check('password').isLenght({min: 4}).withMessage('Ingrese una contraseña válida'),
                       ], usersController.processLogin)
 
-router.get ('/edit', usersController.editarPerfil)
+router.get('/check', function(req, res){
+    if (req.session.usuarioLogueado == undefined){
+        res.send("No estás logueado aún!")
+    } else {
+        res.send("El usuario logueado es " + req.session.usuarioLogueado.email)
+    }
+},
+
+router.get ('/edit', usersController.editarPerfil),
 
 
 
-module.exports = router;
+module.exports = router)

@@ -25,7 +25,24 @@ let usersController = {
       } else {
         users = JSON.parse(usersJSON)
       }
+
+      for (let i =0; i < users.length; i++){
+        if (users[i].email == req.body.email) {
+          if (bcrypt.compareSync(req.body.password, users[i].password)) {
+            let usuarioALoguearse = users[i]
+          }
+        }
+      }
+
+      if (usuarioALoguearse == undefined) {
+        return res.render ('login', {errors: [
+          {msg: "Datos inválidos"}
+        ]})
+      }
       
+      req.session.usuarioLogueado = usuarioALoguearse
+      res.render("Éxitos!")
+
     } else {
       return res.render('login', { errors: errors.errors})
     }
