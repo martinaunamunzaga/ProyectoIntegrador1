@@ -9,16 +9,14 @@ const path = require('path')
 
 var storage = multer.diskStorage({
     destination: (req, res, cb) => {
-        cb(null, '../public/images/foto')
+        cb(null, 'public/images/')
     },
-    filename: (req, res, cb) => {
-        cb(null, file.fieldname + ' ' + Date.now() + path. extname(file.originalname))
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path. extname(file.originalname))
     },
 })
 
 var upload = multer ({ storage: storage })
-
-router.post('/', upload.single('foto', usersController.store))
 
 
 /* GET users listing. */
@@ -30,33 +28,19 @@ router.get('/profile/:id', usersController.miPerfil);
 /* Registro */
 
 router.get('/register', usersController.registracion);
-router.post ('/register', upload.single('foto'), usersController.store)
-router.post('/register', [
-    check('email').isEmail().withMessage('Ingrese un email válido'),
-    check('password').isLenght({min: 4}).withMessage('Ingrese una contraseña válida'),
-                      ], usersController.processLogin)
-
+router.post ('/register', upload.single('imagen'), usersController.store)
 
 /* Login */
 
 router.get ('/login', usersController.login) 
-router.post('/login', [
-    check('email').isEmail().withMessage('Ingrese un email válido'),
-    check('password').isLenght({min: 4}).withMessage('Ingrese una contraseña válida'),
-                      ], usersController.processLogin)
+router.post('/login', usersController.processLogin)
 
-router.get('/check', function(req, res){
-    if (req.session.usuarioLogueado == undefined){
-        res.send("No estás logueado aún!")
-    } else {
-        res.send("El usuario logueado es " + req.session.usuarioLogueado.email)
-    }
-},
+
 
 /* Editar perfil */
 
 router.get ('/edit', usersController.editarPerfil),
+router.get ('/logout', usersController.logout) 
 
 
-
-module.exports = router)
+module.exports = router

@@ -4,7 +4,12 @@
     <%- include("./partials/head") %>
 
 <body>
-    <%- include("./partials/headerLogueado") %>
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
+
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
     <main>
         <div class="uk-section uk-section-small">
             <div class="uk-container uk-container-small">

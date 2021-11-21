@@ -4,8 +4,12 @@
 
 
 <body class="bodyAg">
-    <%- include("./partials/headerLogueado") %>
-   
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
+
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
 
     <main>
         <div class="uk-section uk-section-small">
@@ -14,18 +18,18 @@
                 <h1 class="tituloAg">Nueva publicación</h1>
                 <h4 class="tituloAg">Comienza a publicar tus fotos y videos!</h4>
 
-                <form class="formAg" action="">
+                <form class="formAg" action="/posts/subir" method="post" enctype="multipart/form-data">
 
                     <p>
-                        <input style="color: black;" class="inputForm" type="file" name="seleccionar">
+                        <input style="color: black;" class="inputForm" type="file" name="imagen">
                     </p>
                     
                     <p>
-                        <input type="text" placeholder="Agregar descripción" name="pieDeImagen" class="inputForm">
+                        <input type="text" placeholder="Agregar descripción" name="descripcion" class="inputForm">
                     </p>
 
                     <p>
-                        <button type="submit"><a class="buttonFormAgr" href="/">Publicar!</a></button>
+                        <button type="submit"><a class="buttonFormAgr">Publicar!</a></button>
                     </p>
                 </form>
                </div>

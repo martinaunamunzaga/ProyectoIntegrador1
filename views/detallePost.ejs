@@ -4,7 +4,12 @@
     <%- include("./partials/head") %>
 
 <body>
-    <%- include("./partials/headerLogueado") %>
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
+
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
 
     <main>
         <div class="uk-section uk-section-xsmall">
@@ -32,8 +37,8 @@
                            
                         </div>
                         <div class="agregar-comentario uk-flex uk-flex-middle">
-                            <form action="" class="uk-text-center">
-                              <input type="text" class="uk-input" placeholder="Agregar comentario"> 
+                            <form method="post" action="/posts/hacercomentario/<%= post.id %> " class="uk-text-center">
+                              <input type="text" class="uk-input" placeholder="Agregar comentario" name="comentario"> 
                               <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Comentar</button>
                             </form>
                         </div>

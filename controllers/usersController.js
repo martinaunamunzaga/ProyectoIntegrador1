@@ -1,11 +1,10 @@
 const db = require("../database/models")
 const bcrypt = require("bcryptjs")
 
-let usersController = {
 
-  registracion: function(req, res) {
-    res.render('registracion');
-    let errors = {},
+  let validateUser = function(req, res) {
+    
+    let errors = {}
 
     if (!req.file) {
       errors.push('LA IMAGEN ES REQUERIDA');
@@ -27,56 +26,7 @@ let usersController = {
     }
   
     return errors;
-  },
-
-
-  login: function (req, res){
-        res.render ('login');
-        res.redirect('/');
-      },
-
-  processLogin: function(req,res){
-    let errors = validationResult(req)
-
-    if (errors.isEmpty()){
-      let usersJSON = fs.readFileSync('users.json', { })
-      let users
-      if (usersJSON == "") {
-        users = []
-      } else {
-        users = JSON.parse(usersJSON)
-      }
-
-      for (let i =0; i < users.length; i++){
-        if (users[i].email == req.body.email) {
-          if (bcrypt.compareSync(req.body.password, users[i].password)) {
-            let usuarioALoguearse = users[i]
-          }
-        }
-      }
-
-      if (usuarioALoguearse == undefined) {
-        return res.render ('login', {errors: [
-          {msg: "Datos inválidos"}
-        ]})
-      }
-      
-      req.session.usuarioLogueado = usuarioALoguearse
-      res.render("Éxitos!")
-
-    } else {
-      return res.render('login', { errors: errors.errors})
-    }
   }
-
-}
-
-if (req.session.Usuario != undefined){
-  return res.redirect('/')
-} else {
-  return res.render('login')
-}
-
 
 const controller = {
   miPerfil:  function(req, res) {
@@ -104,7 +54,7 @@ const controller = {
 
         req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
 
-        req.body.imagen = (req.file.destination + req.file.filename).replace('public', '')
+        req.body.imagen = "/images/"+req.file.filename
         db.Usuario.create(req.body)
 
           .then(post => {
@@ -117,7 +67,43 @@ const controller = {
       
       editarPerfil: function (req, res){
         res.render ('editarPerfil');
+      },
+      login: function (req, res){
+        if (req.session.user){
+          res.redirect('/')
+        }
+        res.render ('login');
+      },
+
+  processLogin: function(req,res){
+    db.Usuario.findOne({ where: {email: req.body.email}})
+    .then(user=> {
+      if (!user) {
+        res.render('login',{error:"El mail es incorrecto"})
       }
-}
+      if (bcrypt.compareSync(req.body.contraseña, user.contraseña)) {
+        req.session.user = user;
+        res.cookie('user', user, { maxAge: 1000 * 60 * 60 * 24 * 30 })
+        res.redirect('/');
+      } else {
+        res.render('login',{error:"La contraseña es incorrecta"})
+      }
+    })
+       
+
+  },
+  registracion: function(req,res){
+    if (req.session.user){
+      res.redirect('/')
+    }
+    res.render ('registracion', {errors:null});
+  },
+  logout: function (req, res){
+    res.clearCookie('user');
+      req.session.user = null;
+      res.redirect('/')
+  }
+
+  }
 
 module.exports = controller

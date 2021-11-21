@@ -8,13 +8,11 @@ const controller = {
         association: 'comentarios',
         include: {
           association: 'usuario'
-        },
-        limit: 2
+        }
       }],
       order: [['created_at','desc']]
     })
     .then(data=>{
-      
       res.render('detallePost', {
         post: data
       });
@@ -24,7 +22,36 @@ const controller = {
   },
   agregarPost: function (req, res) {
     res.render('agregarPost');
+  },
+  comentar: function (req, res){
+    if (!req.session.user) {
+      res.redirect('/posts/detail/'+req.params.id);
+    }
+    db.Comentario.create({
+      ...req.body,
+      posteo_id: req.params.id,
+      usuario_id: req.session.user.id
+    }).then(post => {
+      res.redirect('/posts/detail/'+req.params.id);
+    }).catch(error => {
+      return res.render(error);
+    })
+  },
+  subir: function (req, res) {
+    if (!req.file || !req.body.descripcion){
+      res.render('agregarPost', {error:"No puede haber campos vacios"});
+    }
+    req.body.imagen = "/images/"+ req.file.filename
+      db.Posteo.create({
+        ...req.body,
+        usuario_id: req.session.user.id
+      }).then(post => {
+        res.redirect('/');
+      }).catch(error => {
+        return res.render(error);
+      })
   }
+
 }
 
 

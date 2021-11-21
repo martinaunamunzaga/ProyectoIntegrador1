@@ -8,12 +8,12 @@
                 <div class="uk-navbar-center">
                     <ul class="uk-flex uk-flex-between uk-flex-middle">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/">Logout</a></li>  
+                        <li><a href="/users/logout">Logout</a></li>  
                     </ul>
                 </div>
                 <div class="uk-navbar-right">
                     <a href="/posts/add">Agregar post</a>
-                    <a href="/users/profile/1">Mi perfil</a>
+                    <a href="/users/profile/<%= app.user.id %> ">Mi perfil</a>
                     <a href="/users/edit">Editar perfil</a>
                     <form action="/result" class="uk-search uk-search-default">
                         <span uk-search-icon></span>

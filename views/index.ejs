@@ -4,8 +4,12 @@
     <%- include("./partials/head") %>
 
 <body>
-    <%- include("./partials/headerDeslogueado") %>
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
 
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
     <main>
         <div class="uk-section uk-section-small">
             <div class="uk-container uk-container-large uk-flex">
@@ -16,7 +20,7 @@
                 <article class="post uk-card-default uk-flex uk-flex-column">
                     <div class="info-usuario uk-flex ">
                         <div class="fotoPerfil">
-                            <img src="<%= post.usuario.imagen %> " alt="">
+                            <img src="<%= post.usuario.imagen %> " alt="" style="max-height: 50px;">
                         </div>
                         <h4><a class="atUsername" href="/users/profile/<%= post.usuario.id %>"><%= post.usuario.nombre %> </a></h4>
                         

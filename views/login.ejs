@@ -4,8 +4,12 @@
     <%- include("./partials/head") %>
 
 <body class="bodyLogin">
-    <%- include("./partials/headerDeslogueado") %>
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
 
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
     <main>
     
             <div class="uk-section uk-section-small">
@@ -22,7 +26,7 @@
                             </p>
         
                             <p>
-                                <input type= "password" placeholder="Contraseña" name="password" class="inputForm">
+                                <input type= "password" placeholder="Contraseña" name="contraseña" class="inputForm">
                             </p>
         
                             <button class="buttonForm" type="submit">Iniciá sesión</button>
