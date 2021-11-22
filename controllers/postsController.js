@@ -20,9 +20,24 @@ const controller = {
     })
     
   },
+
+  //Crear nuevo posteo
+
   agregarPost: function (req, res) {
-    res.render('agregarPost');
-  },
+    db.Post.create({
+      descripcion: req.body.descripcion,
+      imagen: req.body.imagen,
+      usuario_id: req.session.userLoggedOn.id,
+    }).then(post =>{
+      res.redirect('/')    
+    }).catch(error => {
+      return res.send(error)
+    })  
+  },  //faltaria que se guarde automaticamente la fecha de creadion del posteo
+
+
+  //Comentar posteo
+
   comentar: function (req, res){
     if (!req.session.user) {
       res.redirect('/posts/detail/'+req.params.id);
@@ -37,6 +52,8 @@ const controller = {
       return res.render(error);
     })
   },
+
+  /*
   subir: function (req, res) {
     if (!req.file || !req.body.descripcion){
       res.render('agregarPost', {error:"No puede haber campos vacios"});
@@ -51,7 +68,7 @@ const controller = {
         return res.render(error);
       })
   }
-
+*/
 }
 
 
