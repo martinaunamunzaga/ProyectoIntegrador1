@@ -35,23 +35,38 @@
                             </div>
                            <% } %>
                            
-                        </div>
-                        <div class="agregar-comentario uk-flex uk-flex-middle">
-                            <form method="post" action="/posts/hacercomentario/<%= post.id %> " class="uk-text-center">
-                              <input type="text" class="uk-input" placeholder="Agregar comentario" name="comentario"> 
-                              <button class="buttonForm" type="submit" style="margin-left: 84px;">¡Comentar!</button>
-                            </form>
-                        </div>
+                           <% if (app.user) { %>
 
-                        <% if (app.user && app.user.id == post.usuario_id) { %>
+                           <div class="agregar-comentario uk-flex uk-flex-middle">
+                               <form method="post" action="/posts/hacercomentario/<%= post.id %> " class="uk-text-center">
+                                 <input type="text" class="uk-input" placeholder="Agregar comentario" name="comentario"> 
+                                 <button class="buttonForm" type="submit" style="margin-left: 84px;">¡Comentar!</button>
+                               </form>
+                           </div>
                             
-                            <div class="buttonFormDiv">
-                                <button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button>
+                        <% }else { %>
+                            <p style = color:darkred class = "error"> Debes iniciar sesión para comentar.</p> <a href="/views/login">Hazlo aquí,</a style="color:black"><p>o regístrate</p><a style="color:black;" href="/views/registracion.ejs">aquí</a>
+                        } %> 
+
+                        <% if(app.user && app.user.id === user.id){ %> 
+
                             <button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button>
+                            <a href="/users/profile-edit">
+                                
+                            </a>
+                        <% } %>
+
+                        
+
+                            <div class="buttonFormDiv"></div>
+                                 <button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button>
+                            
+                                 <button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button>
                             </div>
                     
                     
-                        <% } %> 
+                         <% } %> 
+                    <% } %> 
 
 
                     </article>
