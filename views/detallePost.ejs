@@ -35,7 +35,7 @@
                                 </div>
                            <% } %>
                            
-                           <% if (app.user && app.user.id === user.id) { %>
+                           <% if (app.user && app.user.id === post.usuario.id) { %>
 
                            <div class="agregar-comentario uk-flex uk-flex-middle">
                                <form method="post" action="/posts/hacercomentario/<%= post.id %> " class="uk-text-center">
@@ -51,13 +51,13 @@
                         
                         <% } %>
 
-                        <% if(app.user && app.user.id === user.id){ %> 
+                        <% if(app.user && app.user.id === post.usuario.id){ %> 
 
                             <div class="buttonFormDiv"></div>
 
-                            <a href=""><button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button></a> //como haria para q el post se borre?
+                            <a href="/posts/delete/ <%= post.id %>"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button></a> 
                        
-                            <a href="/views/"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button></a> //vista de editar posteo?
+                            <a href="/posts/edit/<%= post.id %>"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button></a> 
 
                             </div>  
 

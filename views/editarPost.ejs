@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head") %>
+
+
+<body class="bodyAg">
+    <% if (app.user) { %>
+        <%- include("./partials/headerLogueado") %>
+
+    <% }else{ %>
+    <%- include("./partials/headerDeslogueado") %>
+    <% } %>
+
+    <main>
+        <div class="uk-section uk-section-small">
+            <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-column">
+               <div class="caja">
+                <h1 class="tituloAg">Editá tu publicación</h1>
+
+                <form class="formAg" action="/posts/edit/<%= post.id %>" method="post" enctype="multipart/form-data">
+
+                    <p>
+                        <input style="color: black;" class="inputForm" type="file" name="imagen">
+                    </p>
+                    
+                    <p>
+                        <input type="text" placeholder="Agregar descripción" name="descripcion" class="inputForm">
+                    </p>
+
+                    <p>
+                        <button type="submit"><a class="buttonFormAgr">¡Publicar!</a></button>
+                    </p>
+                </form>
+               </div>
+
+            </div>
+        </div>
+    </main>
+    
+  <%- include("./partials/footer") %> 
+</body>
+
+</html>
