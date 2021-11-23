@@ -21,6 +21,11 @@
                         <h3 class="titulo2">Iniciá sesión con tu email y contraseña</h3>
                         
                         <form class="inputForm" action="/users/login" method="post">
+                            
+                            <% if (locals.errors) { %>
+                                <p style= color:darkred  class="error">  <%= errors.message %> </p> 
+                                  <% } %>
+
                             <p>
                                 <input type= "email" placeholder="Email" name="email" class="inputForm">
                             </p>
@@ -30,6 +35,8 @@
                             </p>
         
                             <button class="buttonForm" type="submit">Iniciá sesión</button>
+
+                            
         
                         </form>
                     </div>

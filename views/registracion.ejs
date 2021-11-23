@@ -4,12 +4,7 @@
     <%- include("./partials/head") %>
 
 <body class="bodyRegistro">
-    <% if (app.user) { %>
-        <%- include("./partials/headerLogueado") %>
-
-    <% }else{ %>
-    <%- include("./partials/headerDeslogueado") %>
-    <% } %>
+        <%- include("./partials/headerDeslogueado") %>
 
     <main>
 
@@ -22,8 +17,13 @@
                 <h3 class="titulo2">para ver y compartir tus aventuras vinícolas!</h3>
 
                 <form class="inputForm" action="/users/register" method="post" enctype="multipart/form-data">
+
+                    <% if (locals.errors) { %>
+                        <p style = color:darkred class = "error">  <%= errors.message %> </p> 
+                          <% } %>
+
                     <p>
-                        <input type="text" placeholder="Nombre" name="nombre" class="inputForm">
+                        <input type="text" placeholder="Nombre y Apellido" name="nombre" class="inputForm">
                     </p>
 
                     <p>
@@ -48,17 +48,12 @@
                     </p>
                     
                     <button class="buttonForm" type="submit">Registrarme!</button>
-    
                     
-                    
-                      
 
                </div>
             
                 </form>
-                <% if (locals.errors) { %>
-                        <p class = "error">  <%= errors.message %> </p> 
-                          <% } %>
+                
             </div>
         </div>
     </main>

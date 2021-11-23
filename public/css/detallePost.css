@@ -66,5 +66,17 @@ section.detalle-container{
     font-size: medium;
     font-family: 'Playfair Display', serif;
 }
-
+.buttonFormDiv{
+    direction: rtl;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.buttonFormDetalle{
+    font-family: 'Playfair Display', serif;
+    font-size: medium;
+    margin: auto;
+    margin-top: 10px;
+}
 

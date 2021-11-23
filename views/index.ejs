@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="post-comentarios">
-                        <h6>Comentarios</h6>
+                        <h6>Comentarios:</h6>
                         <ul>
                     
                             <% for( let i = 0; i < post.comentarios.length; i++ ) { %>
@@ -53,7 +53,7 @@
                                     <p><%= post.comentarios[i].comentario %> </p>
                                 </li>
                             <% } %>
-                            <a href="">Ver más...</a>
+                            <a href="/posts/detail/<%= post.id %> " style="color: black; font-weight: bold;">Ver más...</a>
                         </ul>
                     </div>
                 </article>

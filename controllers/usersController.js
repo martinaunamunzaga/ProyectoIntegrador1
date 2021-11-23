@@ -14,33 +14,46 @@ registracion: function (req, res){
 
 processRegistracion: function(req,res){
 
-  console.log(req.body)
-
-  if (req.file){
-
-    let errors = []
+    let errors = {}
   
     if (!req.body.nombre) {
-      errors.push('EL NOMBRE ES REQUERIDO');
+      errors.message ='Faltan datos, por favor complete todos los campos';
+      res.locals.errors = errors;
+
+        return res.render('registracion')
     }
     if (!req.body.email) {
-      errors.push('EL EMAIL ES REQUERIDO');
+      errors.message = 'Faltan datos, por favor complete todos los campos';
+      res.locals.errors = errors;
+
+                return res.render('registration')
     }
     if (!req.body.nacimiento) {
-      errors.push('LA FECHA ES REQUERIDA');
+      errors.message = 'Faltan datos, por favor complete todos los campos';
+      res.locals.errors = errors;
+
+                return res.render('registration')
     }
     if (!req.body.telefono) {
-      errors.push('EL TELÉFONO ES REQUERIDO');
+      errors.message = 'Faltan datos, por favor complete todos los campos';
+      res.locals.errors = errors;
+
+                return res.render('registration')
     }
     if (!req.file) {
-        errors.push('LA IMAGEN ES REQUERIDA');
+        errors.message = 'Faltan datos, por favor complete todos los campos';
+        res.locals.errors = errors;
+
+                return res.render('registration')
     }
     if (!req.body.contraseña || req.body.contraseña.length < 3) {
-        errors.push('LA CONSTRASEÑA NO PUEDE ESTAR VACÍA, NI SER MENOR A 3 CARACTERES');
+        errors.message ='LA CONSTRASEÑA NO PUEDE ESTAR VACÍA, NI SER MENOR A 3 CARACTERES';
+        res.locals.errors = errors;
+
+                return res.render('registration')
     }
   
       if (errors.length > 0){
-        return res.render('registracion', {errors: errors})
       } else {
         db.Usuario.create({
           nombre: req.body.nombre,
@@ -51,11 +64,9 @@ processRegistracion: function(req,res){
           imagen: req.body.imagen
         }).then(user => {
           req.session.user = user
-  
           res.redirect('/')
         }
         )}
-      }
     },
 
   
@@ -97,17 +108,22 @@ processRegistracion: function(req,res){
       },
 
    processLogin: function(req,res){
+    let errors = {}
     db.Usuario.findOne({ where: {email: req.body.email}})
     .then(user=> {
       if (!user) {
-        res.render('login',{error:"El mail es incorrecto"})
+        errors.message="Los datos son incorrectos";
+          res.locals.errors=errors;
+          return res.render("login")
       }
       if (bcrypt.compareSync(req.body.contraseña, user.contraseña)) {
         req.session.user = user;
         res.cookie('user', user, { maxAge: 1000 * 60 * 60 * 24 * 30 })
         res.redirect('/');
       } else {
-        res.render('login',{error:"La contraseña es incorrecta"})
+        errors.message="Los datos son incorrectos";
+        res.locals.errors=errors;
+        return res.render("login")
       }
     })
        

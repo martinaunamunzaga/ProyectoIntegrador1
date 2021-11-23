@@ -80,3 +80,7 @@ article.post div.post-comentarios ul li p{
     color: #56070C;
     font-family: 'Playfair Display', serif;
 }
+.post-comentarios h6{
+    font-family: 'Playfair Display', serif;
+    font-size: large;
+}

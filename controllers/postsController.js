@@ -27,7 +27,7 @@ const controller = {
   agregarPost: function (req, res) {
     db.Posteo.create({
       descripcion: req.body.descripcion,
-      imagen: req.file.filename,
+      imagen: `/images/products/${req.file.filename}`,
       usuario_id: req.session.user.id,
     }).then(post =>{
       res.redirect('/')    
@@ -39,6 +39,8 @@ const controller = {
   nuevoPost: function(req, res){
     if(req.session.user){
       res.render('agregarPost')
+    } else{
+      res.redirect('/')
     }
   },
   
@@ -62,22 +64,6 @@ const controller = {
     })
   },
 
-  /*
-  subir: function (req, res) {
-    if (!req.file || !req.body.descripcion){
-      res.render('agregarPost', {error:"No puede haber campos vacios"});
-    }
-    req.body.imagen = "/images/"+ req.file.filename
-      db.Posteo.create({
-        ...req.body,
-        usuario_id: req.session.user.id
-      }).then(post => {
-        res.redirect('/');
-      }).catch(error => {
-        return res.render(error);
-      })
-  }
-*/
 }
 
 
