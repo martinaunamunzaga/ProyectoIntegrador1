@@ -70,8 +70,6 @@ processRegistracion: function(req,res){
         )}
     },
 
-  
-
     //Detalle perfil
 
 
@@ -130,7 +128,6 @@ processRegistracion: function(req,res){
        
 
   },
- 
 
   logout: function (req, res){
     res.clearCookie('user');

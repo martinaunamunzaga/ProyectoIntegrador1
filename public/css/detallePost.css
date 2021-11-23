@@ -79,4 +79,23 @@ section.detalle-container{
     margin: auto;
     margin-top: 10px;
 }
-
+.reinicio{
+    text-align: center;
+    margin-top: 120px;
+    
+}
+.reinicio a{
+    color: darkred;
+    font-size: large;
+}
+.reinicio a hover{
+    color: black;
+}
+.reinicio2{
+    text-align: center;
+    margin-top: 30px;
+}
+.reinicio2 a{
+    color: darkred;
+    font-size: large;
+}
