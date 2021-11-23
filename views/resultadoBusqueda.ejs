@@ -11,19 +11,37 @@
     <%- include("./partials/headerDeslogueado") %>
     <% } %>
     <main>
-        <section class="muro uk-flex uk-flex-middle uk-flex-center">
-            <div class="uk-grid uk-child-width-1-3 uk-width-1-1 uk-margin-remove" uk-grid>
-                <% for( let i = 0; i < 5; i++ ) { %>
-                <% const post = posts[i] %> 
-                <div class="uk-card uk-card-hover uk-card-body uk-flex uk-flex-column uk-flex-middle uk-flex-center ">
-                    <a href="/posts/detail/<%= post.id %> " class="link-detalle">
-                        <img src="<%= post.image %> " alt="foto de perfil" class="foto-feed">
-                        <p class="uk-text-center"><%= post.description %> </p>
-                    </a>
-                </div>
-                <% } %>
-               
-            </div>
+        <section id="posts" class="uk-flex uk-flex-middle uk-flex-center uk-flex-column uk-child-width-1-2 uk-width-1-1">
+                  <%  if (posts.length>0){%> 
+                    <h3> Mostrando resultados para <%= busqueda  %> </h3>
+            <% for( let i = 0; i < posts.length; i++ ) { %>
+                <% const post= posts[i] %> 
+                <article class="post uk-card-default uk-flex uk-flex-column">
+                    <div class="info-usuario uk-flex ">
+                        <div class="fotoPerfil">
+                            <img src="<%= post.usuario.imagen %> " alt="" style="max-height: 50px;">
+                        </div>
+                        <h4><a class="atUsername" href="/users/profile/<%= post.usuario.id %>"><%= post.usuario.nombre %> </a></h4>
+                        
+                    </div>
+                    <div class="post-body uk-flex uk-flex-center">
+                        <a href="/posts/detail/<%= post.id %> ">
+                            <img src="<%= post.imagen %> " alt="">
+                            
+                        </a>
+                    </div>
+                    <div class="post-reacciones">
+                     
+                        <div class="post-pie uk-flex">
+                            <h5 class="description"><a class="atUsername" href="/users/profile/<%= post.usuario.id %> "><%= post.usuario.nombre %> </a></h5>
+                            <p class="description"><%= post.descripcion %> </p>
+                        </div>
+                    </div>
+                   
+                </article>
+             <% }} else{ %>
+                <h3> No exiten resultados para su criterio de busqueda </h3>
+             <% } %> 
         </section>
     </main>
 

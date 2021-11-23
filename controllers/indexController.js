@@ -25,10 +25,37 @@ const controller = {
       })
   },
   result: function (req, res) {
-    res.render('resultadoBusqueda', {
-      title: 'Express',
-      posts: posts.list
-    });
+    db.Posteo.findAll({
+      include: [{
+        association: 'usuario'
+      }, {
+        association: 'comentarios',
+        include: {
+          association: 'usuario'
+        }
+      }],
+      limit: 10,
+        order: [
+          ["created_at", "desc"]
+        ],
+      where: {
+        [op.or]: [{
+          descripcion: {
+            [op.like]: "%" + req.query.search + "%",
+          },
+        }
+         
+        ],
+        
+      }})
+      .then(data => {
+        res.render("resultadoBusqueda", {
+          posts: data,
+          busqueda: req.query.search
+        })
+      })
+    
+   
   },
   resultUser: function (req, res) {
     db.Usuario.findAll({
