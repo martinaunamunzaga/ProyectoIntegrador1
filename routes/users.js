@@ -5,7 +5,7 @@ const usersController = require('../controllers/usersController');
 //Multer
 
 var multer = require('multer');
-const upload = multer({dest:'/public/images'})
+const upload = multer({dest:'../public/images'})
 
 
 /* GET users listing. */
