@@ -17,7 +17,7 @@ router.get('/profile/:id', usersController.miPerfil);
 /* Registro */
 
 router.get('/register', usersController.registracion);
-router.post ('/register', upload.single('imagen'), usersController.store)
+router.post ('/register', upload.single('imagen'), usersController.processRegistracion)
 
 /* Login */
 

@@ -5,9 +5,20 @@ const controller = {
 
 //Registro
 
-  registracion: function(req,res){
+registracion: function (req, res){
+  if (req.session.user){
+    res.redirect('/')
+  }
+  res.render ('registracion');
+},
 
-    let errors = {}
+processRegistracion: function(req,res){
+
+  console.log(req.body)
+
+  if (req.file){
+
+    let errors = []
   
     if (!req.body.nombre) {
       errors.push('EL NOMBRE ES REQUERIDO');
@@ -29,9 +40,9 @@ const controller = {
     }
   
       if (errors.length > 0){
-        return res.render('register', {errors})
+        return res.render('registracion', {errors: errors})
       } else {
-        db.User.create({
+        db.Usuario.create({
           nombre: req.body.nombre,
           email:req.body.email,
           nacimiento:req.body.nacimiento,
@@ -39,12 +50,15 @@ const controller = {
           telefono: req.body.telefono,
           imagen: req.body.imagen
         }).then(user => {
-          req.session.user.id = user
+          req.session.user = user
   
           res.redirect('/')
         }
         )}
+      }
     },
+
+  
 
     //Detalle perfil
 
@@ -71,16 +85,18 @@ const controller = {
    editarPerfil: function (req, res){
         res.render ('editarPerfil');
       },
-      login: function (req, res){
+
+      
+       //Login
+
+   login: function (req, res){
         if (req.session.user){
           res.redirect('/')
         }
         res.render ('login');
       },
 
-      //Login
-
-  processLogin: function(req,res){
+   processLogin: function(req,res){
     db.Usuario.findOne({ where: {email: req.body.email}})
     .then(user=> {
       if (!user) {

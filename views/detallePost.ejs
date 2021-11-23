@@ -42,6 +42,12 @@
                               <button class="uk-button uk-button-primary uk-margin-small-top" type="submit">Comentar</button>
                             </form>
                         </div>
+
+                        <% if (app.user && app.user.id == post.usuario_id) { %>
+                            <p>BOrrrar</p>
+                    
+                        <% } %> 
+
                     </article>
                 </section>
             </div>

@@ -50,14 +50,15 @@
                     <button class="buttonForm" type="submit">Registrarme!</button>
     
                     
-                    <% if (locals.errors) { %>
-                        <p class = "error">  <%= errors.message %> </p> 
-                          <% } %>
+                    
                       
 
                </div>
             
                 </form>
+                <% if (locals.errors) { %>
+                        <p class = "error">  <%= errors.message %> </p> 
+                          <% } %>
             </div>
         </div>
     </main>

@@ -1,5 +1,6 @@
 const db = require("../database/models")
 const controller = {
+
   post: function (req, res) {
     db.Posteo.findByPk( req.params.id, { 
       include: [{
@@ -24,16 +25,24 @@ const controller = {
   //Crear nuevo posteo
 
   agregarPost: function (req, res) {
-    db.Post.create({
+    db.Posteo.create({
       descripcion: req.body.descripcion,
-      imagen: req.body.imagen,
-      usuario_id: req.session.userLoggedOn.id,
+      imagen: req.file.filename,
+      usuario_id: req.session.user.id,
     }).then(post =>{
       res.redirect('/')    
     }).catch(error => {
       return res.send(error)
     })  
-  },  //faltaria que se guarde automaticamente la fecha de creadion del posteo
+  }, 
+  
+  nuevoPost: function(req, res){
+    if(req.session.user){
+      res.render('agregarPost')
+    }
+  },
+  
+  //faltaria que se guarde automaticamente la fecha de creadion del posteo
 
 
   //Comentar posteo
