@@ -62,7 +62,7 @@ processRegistracion: function(req,res){
           nacimiento:req.body.nacimiento,
           contraseña: bcrypt.hashSync(req.body.contraseña, 10),
           telefono: req.body.telefono,
-          imagen: req.body.imagen
+          imagen: `/images/${req.file.filename}` 
         }).then(user => {
           req.session.user = user
           res.redirect('/')
