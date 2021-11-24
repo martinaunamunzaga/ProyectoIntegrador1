@@ -43,8 +43,39 @@ const controller = {
       res.redirect('/')
     }
   },
+
+  delete: function(req, res){
+    db.Posteo.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(post =>{
+      res.redirect("/")
+    })
+  },
   
-  //faltaria que se guarde automaticamente la fecha de creadion del posteo
+  edit: function(req, res){
+    db.Posteo.findByPk(req.params.id)
+    .then(data=>{
+      res.render('editarPost', {
+        post: data
+      });
+    })
+  },
+
+  update: function(req, res){
+    db.Posteo.update({
+      descripcion: req.body.descripcion,
+      imagen: `/images/products/${req.file.filename}`,
+    }, { where: { id: req.params.id }})
+    .then(post => {
+      res.redirect('/');
+    }).catch(error => {
+      return res.render(error);
+    })
+  
+  },
 
 
   //Comentar posteo

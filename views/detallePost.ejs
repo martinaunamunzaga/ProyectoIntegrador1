@@ -35,7 +35,7 @@
                                 </div>
                            <% } %>
                            
-                           <% if (app.user && app.user.id === user.id) { %>
+                           <% if (app.user) { %>
 
                            <div class="agregar-comentario uk-flex uk-flex-middle">
                                <form method="post" action="/posts/hacercomentario/<%= post.id %> " class="uk-text-center">
@@ -45,24 +45,30 @@
                            </div>
                             
                         <% }else { %>
-                            <p style = color:darkred class = "error"> Debes iniciar sesión para comentar.</p> <a href="/views/login">Hazlo aquí,</a style="color:black"><p>o regístrate</p><a style="color:black;" href="/views/registracion">aquí</a>
 
-                            //está bien?
-                        
+                            <div class="reinicio">
+                                <a href="/users/login">Debes iniciar sesión para comentar ¡Hazlo aquí!</a>
+                            </div>
+
+                            <div class="reinicio2">
+                                <a href="/users/register">o regístrate aquí</a>
+                            </div>
+
                         <% } %>
 
-                        <% if(app.user && app.user.id === user.id){ %> 
+                        <% if(app.user && app.user.id === post.usuario.id){ %> 
 
-                            <div class="buttonFormDiv"></div>
+                            <div class="buttonFormDiv">
 
-                            <a href=""><button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button></a> //como haria para q el post se borre?
+                            <a href="/posts/delete/ <%= post.id %>"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Borrar posteo</button></a> 
                        
-                            <a href="/views/"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button></a> //vista de editar posteo?
+                            <a href="/posts/edit/<%= post.id %>"><button class="buttonFormDetalle" type="submit" style="color: darkred;">Editar posteo</button></a> 
 
                             </div>  
 
                         <% } %>
 
+                      
 
 
                     </article>
