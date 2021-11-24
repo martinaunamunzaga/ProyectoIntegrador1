@@ -58,7 +58,7 @@ section.detalle-container{
     margin-right: 4px !important;
 }
 .fotoPerfil{
-    width: 80px;
+    width: 50px;
 }
 .usernameDetalle{
     text-decoration: none;
@@ -67,11 +67,10 @@ section.detalle-container{
     font-family: 'Playfair Display', serif;
 }
 .buttonFormDiv{
-    direction: rtl;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
+  
+  margin-top: 100px;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 .buttonFormDetalle{
     font-family: 'Playfair Display', serif;
