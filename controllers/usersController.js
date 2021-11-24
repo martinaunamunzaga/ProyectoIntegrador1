@@ -55,14 +55,13 @@ processRegistracion: function(req,res){
   
       if (errors.length > 0){
       } else {
-        req.body.imagen = (req.file.destination + req.file.filename).replace('../public', '');
         db.Usuario.create({
           nombre: req.body.nombre,
           email:req.body.email,
           nacimiento:req.body.nacimiento,
           contraseña: bcrypt.hashSync(req.body.contraseña, 10),
           telefono: req.body.telefono,
-          imagen: `/images/${req.file.filename}` 
+          imagen: `/images/usuarios/${req.file.filename}`,
         }).then(user => {
           req.session.user = user
           res.redirect('/')
